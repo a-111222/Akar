@@ -1,0 +1,203 @@
+@mixin prifix ($prifixs,$property,$value:()){
+    @each $prifixs in $prifixs{
+        #{'-'+ $prifixs +'-'+$property}:$value;
+    }
+    #{$property}:$value;
+}
+
+/*only width*/
+.main, .teamContainer, .Carousel,.firstImg,.ScoundImg,.ThirdImg,.ForthImg, .content h2, .content h4{
+    width: 100%;
+}
+
+.main{
+    position: fixed;
+    left: 0;
+    height: 100%;
+    .teamContainer{
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        width: 100%!important;
+    .Carousel{
+        height: 100%;
+        .carousel-control-prev,
+        .carousel-control-next{
+            display: none;
+        }
+        ol{
+            display: none!important;
+        }
+        .carousel-control-prev{
+            top: 90%;
+            left: 30%; 
+        }
+        .carousel-control-next{
+            top: 90%;
+           right: 30%;
+        }
+        .carousel-inner{
+            height: 100%;
+        }
+        .content{
+            height: 600px;
+            width: 500px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+           @include prifix(moz o web-kit,transform,translate(-50%, 4%));
+            .firstImg{
+                background: url('./imgs/o.png');}
+            .ScoundImg{
+                background: url('./imgs/r.png');}
+         
+           .ForthImg{
+               background: url('./imgs/t.png');}
+            
+            .firstImg,
+            .ScoundImg,
+            .ThirdImg,
+            .ForthImg{
+                height: 100%;
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat!important;
+            }
+            .firstImg::after,
+            .ScoundImg::after,
+            .ThirdImg::after,
+            .ForthImg::after{
+                content: '';
+                position: absolute;
+                top: 23%;
+                left: 50%;
+                width: 77%;
+                height: 78%;
+                background: #222;
+                z-index: -1;
+                right: 0;
+                @include prifix(o moz web-kit,transform,translate(-50%, 0));
+                border-radius: 4px;
+            }
+            h2
+            {
+                position: absolute;
+                text-align: center;
+                bottom: 6%;
+                font-size: 27px;
+                color: $scoundColor;
+                font-family: $font;
+                font-weight: 900;
+                letter-spacing: 7px;
+            }
+            h4{
+                position: absolute;
+                bottom: 1%;
+                font-size: 20px;
+                font-weight: 100;
+                letter-spacing: 0px;
+                font-family: $normalFont;
+            }
+        }
+    }
+    }
+}
+
+/****************************************************************/
+/*start media*/
+$xs:320px;  //min-width
+$sm:500px;  //min-width
+$md:720px;  //min-width
+$lg:960px;  //min-width
+$xl:1140px; //min-width
+
+/*strat md */
+@media(min-width:$xs) and (max-width:$md){
+    .hide {
+        display: block!important;
+    }
+}
+@media (min-width: $md){
+ 
+    .hide {
+        display: none!important;
+    }
+  .mainTwo{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: inline-flex;
+    width: 100%;
+    margin: 0 auto;
+
+.one, .two, .three, .four{
+    width: 30%;
+    height: 100%;
+    float: left;
+    @include prifix(moz o web-kit,transition,.8s ease-in-out);
+    background-origin: content-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: inherit!important;
+    cursor: pointer;
+
+    .onep, .twop, .threep, .fourp{
+        text-align: center;
+        position: relative;
+        left: 0;
+        bottom: 0%;
+        h2{
+            color: $scoundColor;
+            font-family: $font;
+            font-weight: 900;
+             letter-spacing: 7px;
+             font-size: 26px;
+             width: 100%;
+            }
+        h4{
+            width: 100%;
+            bottom: 1%;
+            font-size: 20px;
+            font-weight: 100;
+            letter-spacing: 2px;
+            font-family: $normalFont;
+        }
+    }
+    .over-lay{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: antiquewhite;
+        opacity: .8;
+        background: #1a1a1a;
+        @include prifix(moz o web-kit,transition ,$transition );
+    }
+    .over-lay:hover{
+        opacity: .1;
+        @include prifix(moz o web-kit,transition ,$transition );
+    }
+    }
+    .parent:hover .plus{
+        bottom: 33%!important;
+        @include prifix(moz o web-kit,transition ,.5s all ease-in-out );
+    }
+
+}
+.two{
+    width: 50%!important;
+}
+/*.one{background-image: url('./imgs/v.png');}*/
+.two{background-image: url('./imgs/r.png');}
+.three{ background-image: url('./imgs/o.png');}
+.four{ background-image: url('./imgs/t.png');}
+
+ .one:hover, .two:hover, .three:hover, .four:hover  {
+    width: 70%!important;
+    opacity: 1;
+    @include prifix(moz o web-kit,transition ,.8s ease-in-out );
+}
+
+ 
+ 
+
+  }

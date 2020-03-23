@@ -1,0 +1,217 @@
+@import './nav.scss';
+
+.main-services{
+    width: 90%!important;
+    padding-top: 10%;
+    margin: 0 auto;
+
+    .row{
+        margin: 0!important;
+        div{
+            margin-right: 4%;
+            height: 92%;
+            @include prifix (moz o webkit,box-shadow,0px 9px 31px 6px rgba(0, 0, 0, .2));
+            .img{
+                margin: 0 auto;
+                width: 70px;
+                height: 70px;
+                @include prifix (moz o webkit, background-size, cover!important);
+                @include prifix (moz o webkit, background-position, center!important)
+            }
+            h5{
+                text-align: center;
+                font-size: 18px;
+            }
+            p{
+                padding: 4% 1% 0% 9%;
+            }
+            span, p{
+                display: block;
+                font-size: 15px;
+                padding-left: 8%;
+                line-height: 2;
+                font-family: $normalFont;
+            }
+            p::after{
+                content: '';
+                width: 50%;
+                height: 4px;
+                background: #ba4337;
+                display: block;
+                margin-top: 15%;
+            }
+        }
+        .first-service{
+            animation-name: bounceInUp;
+            animation-duration: 2s;
+            transition: $transition;
+            .img{
+                background: url('./imgs/1.png');
+            }
+        }
+        .scound-service{
+            animation-name: bounceInDown;
+            animation-duration: 4s;
+            transition: $transition;
+            margin-top: -4%;
+            background: #222;
+
+            .img{
+                background: url('./imgs/2.png');
+            }
+        }
+        .third-service{
+            animation-name: bounceInUp;
+            animation-duration: 2s;
+            transition: $transition;
+            .img{
+                background: url('./imgs/3.png');
+            }
+        }
+    }
+}
+/*************************************************************/
+/*start media*/
+$xs:320px;  //min-width
+$sm:500px;  //min-width
+$md:720px;  //min-width
+$lg:960px;  //min-width
+$xl:1140px; //min-width
+
+/*start $md media*/
+@media(min-width:$xs) and (max-width:$xl){
+    .main-services, .first-service, .scound-service, .third-service{
+        animation: none!important;
+        background: none;
+        .scound-service{
+            background: none!important;
+         }
+    }
+   
+}
+
+@media (min-width:$xs) and (max-width:$xl){
+   .main-services{
+       margin: 0!important;
+       height: 95%!important;
+   
+
+    .row{    
+   
+    .scound-service{
+        margin-top: 0!important;
+    }
+    .carousel {
+    position: relative!important;
+    width: 100%;
+    margin: 0 auto;
+    @include prifix (webkit moz o ,box-shadow,none);
+    padding-top: 0;
+    margin-bottom: 68%;
+
+    .carousel-indicators{
+        margin: 0 auto;
+    li{
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        margin-right: 3%;
+        background: none;
+        border: 2px solid #EEE;
+        @include prifix(moz o webkit, transition,$transition);
+    }
+    li:hover{
+    border: $border;
+    @include prifix(moz o webkit, transition,$transition );
+    @include prifix (moz o webkit, transform ,scale(1.2));
+    }
+}
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon{
+        display: none;
+    }
+    
+    .active{
+        .item{
+            position: fixed;
+            left: 0;
+            top: 0;
+        }  
+        .main-caption{ 
+            padding-top: 10%;
+            margin-bottom: 4%;
+        .carousel-indicators{
+        margin: 0 auto!important;
+    }
+    .Caption {
+    padding: 0;
+    margin: 0;
+    width: 100%!important;
+    position: fixed;
+    left: 0;
+    .img{
+        margin: 0 auto;
+    }
+    p, span {
+        text-align: center;
+        padding: 0;
+    }
+    p::after{
+        width: 100%;
+    }
+    span{
+        padding: 0;}
+}
+}
+}
+}
+       div {
+        @include prifix (webkit moz o ,box-shadow,none);
+        width: 100%;
+        margin: 0;
+        text-align: left;  
+    }
+}
+} 
+}
+
+/*************************************************************/
+/*start $sm-$xl media*/
+@media (min-width:$sm) and (max-width:$xl){
+    .main-caption{
+        padding-top: 3%!important;
+      .Caption{
+        p::after {
+            width: 60% !important;
+            margin: 6% auto!important;
+        }
+      }
+    }
+    .main-services .row .first-service,.main-services .row .scound-service, .main-services .row .third-service{
+        animation: none!important;
+    }
+}
+
+/*************************************************************/
+/*start $xl media*/
+@media (min-width:$xl){
+   .main-services{
+.row{
+    .first-service, .scound-service,.third-service{
+        padding: 24px 0;
+    }
+    .Carousel{
+        display: none!important;}
+}}
+}
+
+/*special media */
+@media(min-width:$xs) and (max-width:$lg){
+    .main-services{
+        animation: none!important;
+    }
+    .carousel{
+        padding-top: 0; 
+        animation: none!important; 
+    }
+}

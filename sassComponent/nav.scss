@@ -1,0 +1,427 @@
+$back:#1a1a1a;
+$font: 'Playfair Display SC',;
+$normalFont:'Muli', ;
+$color:#FFF;
+$scoundColor:#f95343;
+$border:1px solid #f95343;
+$overColor:-webkit-linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(255, 69, 69) 100%);
+$height:100vh;
+$width:100%;
+$transition:all .2s ease-in-out;
+$transition-menue:all .2s ease-in-out;
+
+/*************************************************************************************/
+/*@mixin for prifixes*/
+@mixin prifix ($prifixes,$property,$value:()){
+@each $prifixes in $prifixes{
+    #{'-' + $prifixes +'-' + $property }: $value;
+}
+#{$property}:$value;
+}
+/*************************************************************************************/
+
+/*only $color*/
+#maindiv, .mdl-menu__container .is-visible, .we button{
+    color: $color;}
+#maindiv, .mdl-menu__container .is-visible, .switch, .switch section, .row, .bg, .back{
+    width: $width;}
+/*only position*/
+.menue, .mdl-menu__container .is-visible, .we button,  button::after, .bg, .back{
+    position: absolute;
+}
+/*************************************************************************************/
+
+
+#maindiv {
+    background: $back;
+    height: $height;
+    font-family: $font;
+    position: relative;
+    overflow: hidden;
+    .menue{
+       left: 0;
+        float: left;
+        font-family: $normalFont;
+        a{
+            letter-spacing: 5px;
+        }
+        a::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: #f95343;
+            height: 1px;
+            display: block;
+            width: 0%;
+            transition: $transition;
+        }
+     a:hover::after{
+            width: 70%;
+            transition: $transition;
+        }
+        a::before{
+            content: '';
+            width: 0%;
+            height: 1px;
+            background:#f95343;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            transition: $transition;
+        }
+        a:hover::before{
+            width: 70%;
+            transition: $transition;
+        }
+        i{
+            font-size: 25px;
+            transition: $transition;
+            opacity: .7;
+        }
+            i:hover{
+                opacity: 1;
+                transform: scale(1.1);;
+                transition: $transition;
+
+            }
+            i::before{
+                border: $border;
+                padding: 6px 9px;
+        }
+        .mdl-menu{    
+           /* top: 119%; */
+            transition: all .5s ease-in-out 0s !important;
+            padding-right: 40%;
+            padding-left: 40%;
+        }
+       
+        .mdl-menu__container .is-visible{
+            float: left;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999999999999999999999;
+            background: black;
+    }
+    /*start menu animation*/
+    @keyframes men {
+        0%{
+            top: -20%;
+        }
+        100%{
+            top: 32px;
+        }
+        
+    }
+
+      .mdl-menu__container .is-upgraded{
+          top: -100%;
+      }
+        
+       .mdl-menu__outline{
+            @include prifix(moz web-kit o ms  , transform ,scale(0));
+        }
+    }
+   .menue .mdl-menu__container {
+        left: 0!important;
+    }
+        }
+    
+/*main.js*/
+.switch {
+    float: right;
+    right: 0;
+    text-align: left;
+    height: 100%;
+    padding-right: 0px!important;
+    position: absolute!important;
+
+    section{
+        height: 100vh;
+        display: flex;
+        overflow: hidden;
+    }
+}
+/*Home.js*/
+.row{
+    height: 100%;
+    margin-left: 0!important;
+}
+.we{
+    z-index: 4!important;
+    max-width: $width;
+    min-height: 1%;
+    position: relative !important;
+    text-align: left;
+    animation-name: re;
+    animation-duration: 2s;
+    transition: all .2s ease-in-out;
+    h1{
+        font-size: 57px;
+        font-family:$font!important;}
+     h3{
+            font-size: 17px;
+            font-weight: 500;
+            color: $scoundColor;
+            opacity: .8;
+    }
+    p{
+        font-family: $normalFont;
+        letter-spacing: 1.3px;
+        font-size: 16px;
+        font-weight: 100;
+    }
+    /*only $scound color*/
+    .we h3,.we button:hover {
+        color: $scoundColor;
+    }
+    button{
+    background: none;
+    font-size: 14px;
+    letter-spacing: 5px;
+    padding: 12px 30px;
+    border: 1px solid $scoundColor;
+    font-family: $normalFont;
+    font-weight: 100;
+    }
+    button:hover,  button, button::after,  button:hover::after{
+        background: none;
+        @include prifix(moz o web-kit ,transition,all .2s ease-in-out);
+    }
+    button::after{
+        content: "";
+        left: -17%;
+        top: 50%;
+        width: 40px;
+        height: 1px;
+        border-bottom: 1px solid $scoundColor;
+    }
+    button:hover::after{
+        left: 90%;
+    }
+    .btn-outline-danger:not(:disabled):not(.disabled):active{
+        background: none!important;
+        border: $border!important;
+    }
+}
+
+/*start we animation*/
+@keyframes re{
+    0%{
+        margin-left: -43%;
+
+    }
+    100%{
+        margin-left: 0%;
+    }
+}
+/**********************************/
+.bg{
+    z-index: 99999999999999;
+    right: 0!important;
+    background-size: cover;
+    height: 100vh!important;
+    .back{
+        top: 0;
+        right: 0;
+        @include prifix(moz web-kit o, background-origin ,border-box);
+        height: 100%;
+        opacity: .9;
+        background-size: cover;
+       background-image: url(./imgs/bg-hero.png);
+       z-index: -111;
+       animation-name: ba;
+       animation-duration: 3s;
+       transition: all .2s ease-in-out;
+    }
+
+
+}
+@keyframes ba{
+    0%{
+        width: 0;
+        transition: all .2s ease-in-out;
+
+    }
+    100%{
+        width: 100%;
+        transition: all .2s ease-in-out;
+
+    }
+}
+.menue ul , .menue li,  .menue li{
+    @include prifix(moz web-kit o ,transition,all 1s ease-in-out  )
+}
+/*start menue */
+
+.menue{   
+    width: 178.375px;
+    height: 208px;
+    color: white;
+    left: 0px;
+    top: 32px;
+    position: absolute;
+    left: 50%; 
+    z-index: 999999999999;
+    display: flex;
+    overflow: initial;
+    background: none;
+i{
+    height:10%;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: #FFF;
+    transition: $transition-menue
+}
+
+a:hover{
+    text-decoration: none;
+    color: #FFF;
+}
+
+.mdl-menu__item:hover{
+    background: none;
+    text-decoration: none!important;
+}
+.mdl-menu__container.is-visible .mdl-menu__outline{
+    background: none;
+}
+
+}
+/*end menue*/
+/****************************************************************/
+/*start media*/
+$xs:320px;  //min-width
+$sm:500px;  //min-width
+$md:720px;  //min-width
+$lg:960px;  //min-width
+$xl:1140px; //min-width
+
+/****************************************************************/
+/*xs media*/
+@media (min-width:$xs){
+    #maindiv .mdl-layout__drawer{
+        z-index: 999999;
+    }
+    .we{
+        @include prifix(moz web-kit o ms ,transform ,translate(0, 13%));
+    }
+    .bg{
+        width: 100%!important;
+        z-index: 1;
+        position: absolute!important;
+        opacity: .2; 
+    }
+    .back{
+        background-position: center!important;
+    }
+    .menue ul ,.menue li{
+        @include prifix( moz web-kit o ,transition ,none!important );
+    }
+}
+
+/*media for navall*/
+/*this media work for all screen exact an xl screen */
+/*from small to xl screen a full screen after that this it will be postion absoulite*/
+@media (min-width:$xs){
+    #maindiv{ 
+        .menue{
+            width: $width;
+            height: $height;
+            z-index: 9;
+        }
+        .mdl-menu__container.is-visible .mdl-menu {
+            opacity: 1;
+            z-index: 999;
+            width: $width;
+            height: $height;
+            background:$back;
+            position: relative;
+            top: 0!important;
+            left: 0;
+            text-align: center!important;
+        }
+        .menue .mdl-menu__container {
+            top: 0px!important;
+            position: fixed;
+            width: 100%!important;
+            height: 100%!important;
+    
+        }
+        .mdl-menu__container.is-visible .mdl-menu__item{
+            padding: 0;
+            margin-bottom: 4%;
+            text-align: center;
+        }
+        .menue a{
+            font-family: $normalFont;
+            font-size: 20px;
+        }
+        a:hover::before,
+        a:hover::after{
+            width: 100%!important;
+        }
+}
+}
+/*$md media*/
+@media (min-width:$md){
+    #maindiv .mdl-menu__container.is-visible .mdl-menu{
+        padding-top: 22%;
+    }
+}
+/* lg media*/
+@media (min-width:$lg){
+.we{
+    @include prifix(moz o web-kit, transform , translate(0, 25%) );
+}
+.bg{
+    opacity: 1;
+    position: absolute;
+}
+.back{
+    background-position: bottom!important;
+ }
+ #maindiv .mdl-menu__container.is-visible .mdl-menu{
+     padding-top: 16%;
+ }
+}
+
+@media (min-width:$xl){
+  
+    .menue ul , .menue li,  .menue li{
+        transition: all 1s ease-in-out!important;
+        @include prifix(moz web-kit o,transition,all .1s ease-in-out!important )
+    }
+    #maindiv .mdl-menu__container.is-visible .mdl-menu{
+        padding-top: 13%;
+    }
+}
+
+/*special media for menu-ul*/
+@media (min-width:$xs) and (max-width:$md){
+    #maindiv .mdl-menu__container.is-visible .mdl-menu{
+        padding-top: 30%;
+        padding-left: 30%;
+        padding-right: 30%;
+    }
+}
+/*special media*/
+@media (min-width:$md) and (max-width:$xl){
+.we p{
+    width: 70%;
+}}
+/*special media*/
+@media (min-width:960px) and (max-width:991px){
+    .bg .back{
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 55%;
+        opacity: .1;
+    }
+}
